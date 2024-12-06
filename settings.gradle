@@ -1,0 +1,5 @@
+rootProject.name = 'labs'
+
+include 'auth'
+include 'score'
+include 'composition'
