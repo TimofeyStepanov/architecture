@@ -1,32 +1,7 @@
-plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.5'
-	id 'io.spring.dependency-management' version '1.1.6'
-}
-
-group = 'ru.stepanoff'
-version = '0.0.1-SNAPSHOT'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+buildscript {
+	ext {
+		protobufVersion = '3.21.12'
+		protobufPluginVersion = '0.9.2'
+		grpcVersion = '1.52.1'
 	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }

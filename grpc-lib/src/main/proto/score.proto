@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "ru.stepanoff.score";
+option java_outer_classname = "ScoreProto";
+
+message ScoreRequest {
+
+}
+
+message ScoreResponse {
+  double score = 1;
+}
+
+service ScoreService {
+  rpc getScore(ScoreRequest) returns (ScoreResponse);
+}

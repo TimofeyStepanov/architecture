@@ -19,13 +19,13 @@ class ScopeControllerTest {
 
     @Test
     void getScopeBySimpleLogin() throws Exception {
-        mockMvc.perform(get("/scope/a"))
+        mockMvc.perform(get("/score"))
                 .andExpect(status().is2xxSuccessful());
     }
 
     @Test
     void getScopeByEmptyLogin() throws Exception {
-        mockMvc.perform(get("/scope/"))
+        mockMvc.perform(get("/score/aaaa"))
                 .andExpect(status().is4xxClientError());
     }
 

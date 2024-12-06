@@ -24,8 +24,11 @@ repositories {
 }
 
 dependencies {
+    implementation project(':grpc-lib')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
 
     implementation 'org.apache.httpcomponents.client5:httpclient5'
 

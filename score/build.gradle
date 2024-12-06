@@ -24,7 +24,10 @@ repositories {
 }
 
 dependencies {
+	implementation project(':grpc-lib')
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

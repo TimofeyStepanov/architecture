@@ -1,5 +1,6 @@
 rootProject.name = 'labs'
 
+include 'grpc-lib'
 include 'auth'
 include 'score'
 include 'composition'
