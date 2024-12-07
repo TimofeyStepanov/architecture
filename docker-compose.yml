@@ -1,0 +1,53 @@
+version: "3.9"
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "test"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+
+  score:
+    container_name: score-service
+    build:
+      context: .
+      target: scope_image
+    ports:
+      - "8081:8081"
+      - "9081:9081"
+
+  auth:
+    container_name: auth-service
+    build:
+      context: .
+      target: auth_image
+    environment:
+      - DATA_SOURCE_URL=jdbc:postgresql://postgres:5432/test
+      - DATA_SOURCE_USER=user
+      - DATA_SOURCE_PASSWORD=password
+    ports:
+      - "8082:8082"
+      - "9082:9082"
+    depends_on:
+      - postgres
+
+  composition:
+    container_name: composition-service
+    build:
+      context: .
+      target: composition_image
+    environment:
+      - MIN_SCORE_VALUE_FOR_AUTH=0.2
+      - SCORE_GRPC_ADDRESS=static://score:9081
+      - AUTH_GRPCS_ADDRESS=static://auth:9082
+    ports:
+      - "8083:8083"
+      - "9083:9083"
+    depends_on:
+      - score
+      - auth
+
