@@ -3,7 +3,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon -x test
 
-FROM eclipse-temurin:17-jre-alpine AS scope_image
+FROM eclipse-temurin:17-jre-alpine AS score_image
 WORKDIR /src
 COPY --from=build /home/gradle/src/score/build/libs/ ./
 CMD ["java","-jar","score-0.0.1-SNAPSHOT.jar"]
