@@ -32,6 +32,10 @@ dependencies {
 
     implementation 'org.apache.httpcomponents.client5:httpclient5'
 
+    //open api, swagger
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.2'
+    implementation 'io.swagger:swagger-models:1.6.10'
+
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

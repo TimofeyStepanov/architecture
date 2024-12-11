@@ -1,5 +1,6 @@
 package ru.stepanoff.composition.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +16,10 @@ import ru.stepanoff.composition.service.CompositionService;
 public class CompositionController {
 
     private final CompositionService compositionService;
-
     @PostMapping("/auth")
+    @Operation(summary = "Вход в систему")
     public boolean checkAuth(@RequestBody @Validated AuthDTO authDTO) {
+
         return compositionService.checkAuth(authDTO);
     }
 }
